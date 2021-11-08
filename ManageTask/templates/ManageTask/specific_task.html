@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>{{task_title}}</title>
+    <style>
+        table, th, td {
+        width:70%;
+        border: 1px solid black;
+        }
+</style>
 </head>
 <body>
-$END$
+    <h1>{{task_title}}</h1>
+    <h2>Details</h2>
+
+    <table style="table-layout:fixed;">
+        <tr>
+            <th style="width:150%">Task_Description</th>
+            <th style="width:40%">Start Date</th>
+            <th style="width:30%">Is Complete</th>
+            <th style="width:40%">Completed_Date</th>
+        </tr>
+          <tr>
+              <td>{{task_description}}</td>
+              <td>{{start_date}}</td>
+              <td>{{is_complete}}</td>
+              <td>{{completed_date}}</td>
+        </tr>
+    </table>
+    <br>
+    <a href="{% url 'ManageTask:update_task' task_id %}"><input type="submit" value="Update"></a>
+
+    <br>
+    <br>
+    {% if is_complete %}
+        <a href="{% url 'ManageTask:mark_as_done' task_id %}">
+            <button type="submit" disabled>
+                Mark As Done
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'ManageTask:mark_as_done' task_id %}">
+            <button type="submit">
+                Mark As Done
+            </button>
+        </a>
+    {% endif %}
+    <br>
+    <br>
+    <a href="{% url 'ManageTask:delete_task' task_id %}"><input type="submit" value="Delete This Task"></a>
+
+
 </body>
 </html>

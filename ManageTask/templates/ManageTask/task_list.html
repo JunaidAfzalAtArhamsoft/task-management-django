@@ -5,7 +5,27 @@
     <title>TaskLists</title>
 </head>
 <body>
-    <h1 style="color:DarkSlateGray;">List  Contains Following Tasks</h1>
+    <h1 style="color:DarkSlateGray;">List <span style="color:red;">{{name_of_list}}</span> Contains Following Tasks </h1>
+
+    <h2>Tasks in progress</h2>
+    <h3>
+    {% for task in incomplete_tasks%}
+    <li><a href="{{id}}/{{task.id}}/"> {{ task }}</a></li>
+    {% endfor %}
+    </h3>
+    <br>
+    <br>
+    <a href="{% url 'ManageTask:add_task' id %}">
+        <button type="submit">
+        Add Task
+        </button>
+    </a>
+    <h2>Completed Tasks</h2>
+        <h3>
+            {% for task in completed_tasks %}
+                <li><a href="{{id}}/{{task.id}}/"> {{ task }}</a></li>
+            {% endfor %}
+        </h3>
 
 </body>
 </html>

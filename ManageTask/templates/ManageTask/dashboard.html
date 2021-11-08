@@ -5,17 +5,23 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1 style="color:DarkSlateGray;">Welcome {{data.user}}</h1>
+    <h1 style="color:DarkSlateGray;">Welcome {{data.user}}
+    <a href="{% url 'ManageTask:logout' %}">
+        <button type="submit">
+        Logout
+        </button>
+    </a>
+    </h1>
     <h2 style="color:Teal;">You have the Following Lists Available</h2>
     {% for specific_list in data.task_list %}
-        <a href="{% url 'ManageTask:task_list' %}"> <h3 style="color:BlueViolet;">{{specific_list}}</h3></a>
-        <ul>
-            {% for task in data.tasks %}
-                <li>{{data.tasks.specific_list}}</li>
-            {% endfor %}
+        <a href="{% url 'ManageTask:task_list' specific_list.id%}"> <h3 style="color:BlueViolet;">{{specific_list}}</h3></a>
+<!--        <ul>-->
+<!--            {% for task in data.tasks.values %}-->
+<!--                <li>{{task}}</li>-->
+
+<!--            {% endfor %}-->
         </ul>
 
     {% endfor %}
-    {{data.tasks}}
 </body>
 </html>

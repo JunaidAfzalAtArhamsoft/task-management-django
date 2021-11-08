@@ -43,7 +43,7 @@ class Task(models.Model):
     task_title = models.CharField(max_length=100, blank=False)
     task_description = models.TextField()
     start_date = models.DateTimeField(default=datetime.now())
-    completed_date = models.DateTimeField(blank=True, null=True)
+    completed_date = models.DateTimeField(blank=True, null=True, default=None)
     is_complete = models.BooleanField(default=False)
     task_list = models.ForeignKey(TaskList, on_delete=models.CASCADE)
 

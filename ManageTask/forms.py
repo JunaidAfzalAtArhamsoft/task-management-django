@@ -1,6 +1,6 @@
 from django.forms import ModelForm, Form
 from django import forms
-from .models import Person
+from .models import Person, Task
 
 
 class PersonForm(ModelForm):
@@ -31,3 +31,9 @@ class LoginForm(forms.Form):
 
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ('task_title', 'task_description')
